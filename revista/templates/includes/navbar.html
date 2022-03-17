@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Inicio</a>
+                <hr class="mt-1 mb-1"/>
+                {% if user.is_authenticated %}
+                    <a class="nav-link" href="/">Perfil de <b><i>{{user.username}}</i></b></a>
+                    {% if user.is_superuser %}
+                        <a class="nav-link" href="/">Administrar algo</a>
+                        <a class="nav-link" href="/">Consultar algo</a>
+                    {% endif %}
+                    <hr class="mt-1 mb-1"/>
+                    <a class="nav-link" href="/">Salir</a>
+                    <hr class="mt-1 mb-1"/>
+                {% else %}
+                    <a class="nav-link" href="/">Ingresar</a>    
+                    <a class="nav-link" href="/">Registrarse</a>
+                {% endif %}
+
+            </div>
+        </div>
+        <a class="navbar-brand" href="/">RIUS</a>
+        {% if user.is_authenticated %}
+            <a class="text-reset fw-bold" href="/"><i class="bi bi-box-arrow-right" style="font-size: 1.5rem;"></i></a>
+        {% endif %}
+    </div>
+</nav>
